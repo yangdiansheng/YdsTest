@@ -12,15 +12,16 @@ import ydstest.yangdainsheng.com.ydstest.asynctask.MyAynctask;
 import ydstest.yangdainsheng.com.ydstest.asynctask.TestAysncTask;
 import ydstest.yangdainsheng.com.ydstest.handle_thread.MyHandlerThread;
 import ydstest.yangdainsheng.com.ydstest.handle_thread.MyIntentService;
+import ydstest.yangdainsheng.com.ydstest.image.LongImgViewActivity;
 import ydstest.yangdainsheng.com.ydstest.toast.ToastUtils;
 
 public class MainActivity extends AppCompatActivity {
 
 
-    @OnClick(R.id.tv_hello_world)
-    void helloworld(){
-//        new MyAynctask().execute("ttehejksk");
-        new TestAysncTask().execute("sdjklsjfklsjf");
+    @OnClick(R.id.tv_long_img)
+    void longImg(){
+        Intent intent = new Intent(this,LongImgViewActivity.class);
+        startActivity(intent);
     }
 
     public void test(){
