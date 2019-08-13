@@ -1,6 +1,13 @@
 package ydstest.yangdainsheng.com.ydstest.key_board;
 
+import android.content.ContentResolver;
 import android.content.Context;
+import android.database.CharArrayBuffer;
+import android.database.ContentObserver;
+import android.database.Cursor;
+import android.database.DataSetObserver;
+import android.net.Uri;
+import android.os.Bundle;
 import android.view.inputmethod.InputMethodManager;
 
 /**
@@ -22,5 +29,7 @@ public class Utils {
         if (imm != null) {
             imm.toggleSoftInput(0,InputMethodManager.HIDE_NOT_ALWAYS);
         }
+        Cursor cursor = null;
+        cursor.close();
     }
 }
