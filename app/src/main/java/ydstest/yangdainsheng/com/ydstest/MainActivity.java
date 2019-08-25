@@ -1,16 +1,15 @@
 package ydstest.yangdainsheng.com.ydstest;
 
 import android.app.Activity;
-import android.app.Service;
 import android.content.Intent;
-import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
+import android.util.ArrayMap;
 import android.util.Log;
-import android.widget.Toast;
+import android.util.SparseArray;
 
 import java.io.IOException;
-import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -23,30 +22,42 @@ import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import rx.Observable;
 import rx.Observer;
-import rx.Scheduler;
 import rx.Subscriber;
 import rx.schedulers.Schedulers;
-import ydstest.yangdainsheng.com.ydstest.asynctask.MyAynctask;
-import ydstest.yangdainsheng.com.ydstest.asynctask.TestAysncTask;
-import ydstest.yangdainsheng.com.ydstest.handle_thread.MyHandlerThread;
 import ydstest.yangdainsheng.com.ydstest.handle_thread.MyIntentService;
 import ydstest.yangdainsheng.com.ydstest.image.LongImgViewActivity;
 import ydstest.yangdainsheng.com.ydstest.log.LogUtils;
-import ydstest.yangdainsheng.com.ydstest.retrofit.AvailableLimitBean;
 import ydstest.yangdainsheng.com.ydstest.retrofit.RequestService;
 import ydstest.yangdainsheng.com.ydstest.retrofit.RequestServiceForRxJava;
 import ydstest.yangdainsheng.com.ydstest.retrofit.RequestServiceString;
 import ydstest.yangdainsheng.com.ydstest.retrofit.call.CustomCallAdapterFactory;
 import ydstest.yangdainsheng.com.ydstest.retrofit.converter.StringConverterFactory;
-import ydstest.yangdainsheng.com.ydstest.toast.ToastUtils;
 
 public class MainActivity extends Activity {
 
 
     @OnClick(R.id.tv_long_img)
     void longImg(){
-        Intent intent = new Intent(this,LongImgViewActivity.class);
+        Intent intent = new Intent(this, LongImgViewActivity.class);
         startActivity(intent);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    @OnClick(R.id.tv_arraymap)
+    void arrayMap(){
+        ArrayMap<Integer,Integer> map = new ArrayMap<>();
+        map.put(1,1000);
+        map.put(1,2000);
+        Log.i("yyy", "arraymap = " + String.valueOf(map.get(1)));
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    @OnClick(R.id.tv_sparsearray)
+    void sparseArray(){
+        SparseArray<Integer> sparseArray = new SparseArray<>();;
+        sparseArray.put(1,2000);
+        sparseArray.put(1,3000);
+        Log.i("yyy", "sparseArray = " + String.valueOf(sparseArray.get(1)));
     }
 
     @OnClick(R.id.tv_request)
